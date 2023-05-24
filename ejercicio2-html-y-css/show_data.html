@@ -1,0 +1,124 @@
+// ARCHIVO PARA MOSTRAR LOS CAMPOS DEL FORMULARIO CON SUS RESPECTIVOS VALORES ENVIADOS.
+
+<html>
+
+<head>
+  <title>Feedback Sent</title>
+</head>
+
+<body>
+  <p align=center>&nbsp;</p>
+  <h1 align=center>
+    <font size="+1">The following information has been sent as your feedback:</font>
+  </h1>
+
+  <table border="1" align=center width="226">
+    <tr>
+      <th align="center">Form Field</th>
+      <th align="center">Field Value</th>
+    </tr>
+
+    <script language="javascript">
+      var args = location.search.substr(1).split('&');
+      console.log(args);
+      for (var i = 0; i < args.length; ++i) {
+        var parts = args[i].split('=');
+        console.log(parts);
+        if (parts != null) {
+          var field = parts[0];
+          var value = parts[1];
+          if(field == 'terminos' & value == 'on') value = 'Si'
+          else if(field == 'terminos' & value == '') value = 'No'; 
+          console.log(value);
+          if (value == null) {
+            value = "null"
+          }
+          else {
+            value = '"' + unescape(value.replace(/\+/g, ' ')) + '"';
+          }
+
+          document.writeln('<tr><td align="center">' + field + '</td>');
+          document.writeln('<td align="center">' + value + '</td></tr>');
+        }
+      }
+    </script>
+
+    <noscript>
+      <tr>
+        <td>
+          <p>You need to turn on Javascript in your browser.</p>
+
+          <p>In Microsoft Internet Explorer 4 or greater:</p>
+          <ul>
+            <li>From the "Tools" menu (in IE 4, it's the "View" menu), select "Internet Options".</li>
+            <li>Click on the "Security" tab.</li>
+            <li>Click on the "Custom Level" button. (In IE 4, select "Custom"
+              and then click on "Settings...".)</li>
+            <li>Under "Active scripting" make sure "Enable" is selected.</li>
+          </ul>
+
+          <p>In Netscape version 4 or greater:</p>
+          <ul>
+            <li>From the <b>Edit</b> menu, select <b>Preferences</b>.</li>
+            <li>In the <b>Category</b> list on the left, click on the word "Advanced".</li>
+            <li>In the panel on the right, make sure "Enable JavaScript" is checked.</li>
+            <li>Click the <b>OK</b> button.</li>
+          </ul>
+
+        </td>
+      </tr>
+    </noscript>
+
+  </table>
+</body>
+
+</html> 
+
+
+ <!-- <!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Data</title>
+</head>
+
+<body>
+  <h1>Datos del formulario</h1>
+
+  <script>
+    // Obtener los parámetros de la URL
+    const params = new URLSearchParams(window.location.search);
+
+    // Obtener los valores de los campos del formulario
+    const email = params.get('email');
+    const password = params.get('password');
+    const gender = params.get('genero');
+    const termsAccepted = params.get('terminos') === 'on' ? 'Sí' : 'No';
+    console.log(termsAccepted);
+    // Mostrar los datos en la página
+    const dataContainer = document.createElement('ul');
+
+    const emailItem = document.createElement('li');
+    emailItem.innerHTML = `<strong>Email:</strong> ${email}`;
+    dataContainer.appendChild(emailItem);
+
+    const passwordItem = document.createElement('li');
+    passwordItem.innerHTML = `<strong>Contraseña:</strong> ${password}`;
+    dataContainer.appendChild(passwordItem);
+
+    const genderItem = document.createElement('li');
+    genderItem.innerHTML = `<strong>Género:</strong> ${gender}`;
+    dataContainer.appendChild(genderItem);
+
+    const termsItem = document.createElement('li');
+    termsItem.innerHTML = `<strong>Acepta términos:</strong> ${termsAccepted}`;
+    dataContainer.appendChild(termsItem);
+
+    document.body.appendChild(dataContainer);
+  </script>
+</body>
+
+</html>
+  -->
